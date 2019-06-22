@@ -38,7 +38,7 @@ type alias Line =
 
 initState : State
 initState =
-    State ( 0, 0 ) 0 1 Color.black
+    State ( 0, 0 ) 0 1 Color.gray
 
 
 iterate : ( State, List Command ) -> ( State, List Line )
