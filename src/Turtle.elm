@@ -25,7 +25,7 @@ type Command
     | IncreaseSaturation Float
     | IncreaseLightness Float
     | IncreaseAlpha Float
-    | List Command
+    | Branch (List Command)
 
 
 type alias Line =
@@ -102,10 +102,10 @@ iterate ( state, commands ) =
                     , lines
                     )
 
-                List _ ->
+                Branch branchCommands ->
                     let
                         ( _, branchedLines ) =
-                            iterate ( currentState, command )
+                            iterate ( currentState, branchCommands )
 
                         newLines =
                             List.concat [ branchedLines, lines ]
