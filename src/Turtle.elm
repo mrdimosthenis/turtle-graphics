@@ -104,14 +104,13 @@ iterate ( state, commands ) =
 
                 Branch branchCommands ->
                     let
-                        ( _, branchedLines ) =
-                            iterate ( currentState, branchCommands )
-
-                        newLines =
-                            List.concat [ branchedLines, lines ]
+                        branchedLines =
+                            ( currentState, branchCommands )
+                                |> iterate
+                                |> Tuple.second
                     in
                     ( currentState
-                    , newLines
+                    , List.concat [ branchedLines, lines ]
                     )
         )
         ( state, [] )
@@ -120,8 +119,7 @@ iterate ( state, commands ) =
 
 toLines : Command -> List Line
 toLines command =
-    let
-        ( _, lines ) =
-            iterate ( initState, [ command ] )
-    in
-    List.reverse lines
+    ( initState, [ command ] )
+        |> iterate
+        |> Tuple.second
+        |> List.reverse
