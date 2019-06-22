@@ -62,7 +62,7 @@ iterate ( state, commands ) =
 
                 Turn a ->
                     ( { currentState
-                        | orientation = orientation + degrees a
+                        | orientation = orientation - degrees a
                       }
                     , lines
                     )
@@ -118,10 +118,10 @@ iterate ( state, commands ) =
         commands
 
 
-toLines : List Command -> List Line
-toLines commands =
+toLines : Command -> List Line
+toLines command =
     let
         ( _, lines ) =
-            iterate ( initState, commands )
+            iterate ( initState, [ command ] )
     in
     List.reverse lines

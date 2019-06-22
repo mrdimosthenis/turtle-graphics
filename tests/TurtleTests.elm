@@ -12,7 +12,19 @@ toLinesTests =
         [ describe "single command"
             [ test "move" <|
                 \_ ->
+                    Move 20
+                        |> toLines
+                        |> equal
+                            [ { end = ( 20, 0 )
+                              , lineColor = Color.black
+                              , lineWidth = 1
+                              , start = ( 0, 0 )
+                              }
+                            ]
+             , test "move in branch" <|
+                \_ ->
                     [ Move 10 ]
+                        |> Branch
                         |> toLines
                         |> equal
                             [ { end = ( 10, 0 )
@@ -21,9 +33,9 @@ toLinesTests =
                               , start = ( 0, 0 )
                               }
                             ]
-            , test "turn" <|
+            , test "turn in branch" <|
                 \_ ->
-                    [ Turn 90 ]
+                    Turn 90
                         |> toLines
                         |> equal
                             []
@@ -35,6 +47,7 @@ toLinesTests =
                     , Move 5
                     , Move 5
                     ]
+                        |> Branch
                         |> toLines
                         |> equal
                             [ { end = ( 10, 0 )
@@ -59,6 +72,7 @@ toLinesTests =
                     , Turn 90
                     , Move 5
                     ]
+                        |> Branch
                         |> toLines
                         |> equal
                             [ { end = ( 10, 0 )
@@ -66,7 +80,7 @@ toLinesTests =
                               , lineWidth = 1
                               , start = ( 0, 0 )
                               }
-                            , { end = ( 10, 5 )
+                            , { end = ( 10, -5 )
                               , lineColor = Color.black
                               , lineWidth = 1
                               , start = ( 10, 0 )
