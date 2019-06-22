@@ -18,7 +18,7 @@ type alias State =
 
 
 type Command
-    = Forward Float
+    = Move Float
     | Turn Float
     | IncreaseWidth Float
     | HueShift Float
@@ -46,7 +46,7 @@ iterate ( state, commands ) =
     List.foldl
         (\command ( { location, orientation, width, color } as currentState, lines ) ->
             case command of
-                Forward x ->
+                Move x ->
                     let
                         newState =
                             { currentState
