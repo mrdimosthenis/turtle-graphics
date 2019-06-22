@@ -29,6 +29,7 @@ increaseSaturation x color =
     let
         { hue, saturation, lightness, alpha } =
             Color.toHsla color
+
         newSaturation =
             bound (saturation + x)
     in
@@ -40,6 +41,7 @@ increaseLightness x color =
     let
         { hue, saturation, lightness, alpha } =
             Color.toHsla color
+
         newLightness =
             bound (lightness + x)
     in
@@ -51,6 +53,7 @@ increaseAlpha x color =
     let
         { hue, saturation, lightness, alpha } =
             Color.toHsla color
+
         newAlpha =
             bound (alpha + x)
     in
