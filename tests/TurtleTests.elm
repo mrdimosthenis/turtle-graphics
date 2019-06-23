@@ -1,4 +1,4 @@
-module TurtleTests exposing (toLinesTests)
+module TurtleTests exposing (edgesTests, toLinesTests)
 
 import Color
 import Expect exposing (..)
@@ -248,4 +248,35 @@ toLinesTests =
                               }
                             ]
             ]
+        ]
+
+
+edgesTests : Test
+edgesTests =
+    describe "lines to edges"
+        [ test "single test" <|
+            \_ ->
+                [ { end = ( 10, 0 )
+                  , lineColor = Color.gray
+                  , lineWidth = 1
+                  , start = ( 0, 0 )
+                  }
+                , { end = ( -20, 0 )
+                  , lineColor = Color.gray
+                  , lineWidth = 1
+                  , start = ( 10, 0 )
+                  }
+                , { end = ( -20, 30 )
+                  , lineColor = Color.gray
+                  , lineWidth = 1
+                  , start = ( -20, 0 )
+                  }
+                , { end = ( -20, -25 )
+                  , lineColor = Color.gray
+                  , lineWidth = 1
+                  , start = ( -20, 30 )
+                  }
+                ]
+                    |> edges
+                    |> equal (Edges -20 10 -25 30)
         ]

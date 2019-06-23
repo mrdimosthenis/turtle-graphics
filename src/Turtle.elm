@@ -1,4 +1,4 @@
-module Turtle exposing (Command(..), Line, Point, State, initState, iterate, toLines)
+module Turtle exposing (Command(..), Edges, Line, Point, State, edges, iterate, lineEdges, mergeEdges, toLines)
 
 import Color
 import ColorShift
@@ -39,9 +39,12 @@ type alias Line =
     }
 
 
-initState : State
-initState =
-    State ( 0, 0 ) 0 1 Color.gray
+type alias Edges =
+    { minX : Float
+    , maxX : Float
+    , minY : Float
+    , maxY : Float
+    }
 
 
 iterate : ( State, List Command ) -> ( State, List Line )
@@ -143,7 +146,46 @@ iterate ( state, commands ) =
 
 toLines : Command -> List Line
 toLines command =
-    ( initState, [ command ] )
+    ( State ( 0, 0 ) 0 1 Color.gray
+    , [ command ]
+    )
         |> iterate
         |> Tuple.second
         |> List.reverse
+
+
+lineEdges : Line -> Edges
+lineEdges { start, end } =
+    let
+        ( startX, startY ) =
+            start
+
+        ( endX, endY ) =
+            end
+    in
+    { minX = min startX endX
+    , maxX = max startX endX
+    , minY = min startY endY
+    , maxY = max startY endY
+    }
+
+
+mergeEdges : Edges -> Edges -> Edges
+mergeEdges a b =
+    { minX = min a.minX b.minX
+    , maxX = max a.maxX b.maxX
+    , minY = min a.minY b.minY
+    , maxY = max a.maxY b.maxY
+    }
+
+
+edges : List Line -> Edges
+edges lines =
+    List.foldl
+        (\line currentEdges ->
+            line
+                |> lineEdges
+                |> mergeEdges currentEdges
+        )
+        (Edges 0 0 0 0)
+        lines
