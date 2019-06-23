@@ -25,6 +25,9 @@ type Command
     | IncreaseSaturation Float
     | IncreaseLightness Float
     | IncreaseAlpha Float
+    | IncreaseRed Float
+    | IncreaseGreen Float
+    | IncreaseBlue Float
     | Branch (List Command)
 
 
@@ -98,6 +101,27 @@ iterate ( state, commands ) =
                 IncreaseAlpha x ->
                     ( { currentState
                         | color = ColorShift.increaseAlpha x color
+                      }
+                    , lines
+                    )
+
+                IncreaseRed x ->
+                    ( { currentState
+                        | color = ColorShift.increaseRed x color
+                      }
+                    , lines
+                    )
+
+                IncreaseGreen x ->
+                    ( { currentState
+                        | color = ColorShift.increaseGreen x color
+                      }
+                    , lines
+                    )
+
+                IncreaseBlue x ->
+                    ( { currentState
+                        | color = ColorShift.increaseBlue x color
                       }
                     , lines
                     )

@@ -87,6 +87,34 @@ toLinesTests =
                                   , start = ( 10, 0 )
                                   }
                                 ]
+                , test "change rgb and move" <|
+                    \_ ->
+                        [ IncreaseRed 64
+                        , Move 5
+                        , IncreaseGreen 32
+                        , Move 10
+                        , IncreaseGreen 16
+                        , Move 5
+                        ]
+                            |> Branch
+                            |> toLines
+                            |> equal
+                                [ { end = ( 5, 0 )
+                                  , lineColor = Color.rgba 64.82745098039216 0.8431372549019608 0.8117647058823529 1
+                                  , lineWidth = 1
+                                  , start = ( 0, 0 )
+                                  }
+                                , { end = ( 15, 0 )
+                                  , lineColor = Color.rgba 64.82745098039216 32.84313725490196 0.8117647058823529 1
+                                  , lineWidth = 1
+                                  , start = ( 5, 0 )
+                                  }
+                                , { end = ( 20, 0 )
+                                  , lineColor = Color.rgba 64.82745098039216 48.84313725490196 0.8117647058823529 1
+                                  , lineWidth = 1
+                                  , start = ( 15, 0 )
+                                  }
+                                ]
                 ]
             ]
         , describe "nested"
