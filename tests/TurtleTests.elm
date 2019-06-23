@@ -278,7 +278,7 @@ edgesTests =
                   }
                 ]
                     |> edges
-                    |> equal (Edges -20 10 -25 30)
+                    |> equal (Edges -20 10 -25 30 30 55)
         ]
 
 
