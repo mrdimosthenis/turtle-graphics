@@ -1,4 +1,4 @@
-module Turtle exposing (Command(..), Edges, Line, Point, State, edges, iterate, lineEdges, mergeEdges, toLines)
+module Turtle exposing (Command(..), Edges, Line, Point, State, centered, edges, iterate, lineEdges, mergeEdges, toLines)
 
 import Color
 import ColorShift
@@ -188,4 +188,27 @@ edges lines =
                 |> mergeEdges currentEdges
         )
         (Edges 0 0 0 0)
+        lines
+
+
+centered : List Line -> List Line
+centered lines =
+    let
+        { minX, minY } =
+            edges lines
+    in
+    List.map
+        (\({ start, end } as line) ->
+            let
+                ( startX, startY ) =
+                    start
+
+                ( endX, endY ) =
+                    end
+            in
+            { line
+                | start = ( startX - minX, startY - minY )
+                , end = ( endX - minX, endY - minY )
+            }
+        )
         lines
