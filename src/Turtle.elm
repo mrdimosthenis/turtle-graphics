@@ -1,4 +1,4 @@
-module Turtle exposing (Command(..), Edges, Line, Point, State, centered, edges, iterate, lineEdges, mergeEdges, toLines)
+module Turtle exposing (Command(..), Edges, Line, Point, State, adjustLinesToEdges, iterate, lineEdges, linesToEdges, mergeEdges, toLines)
 
 import Color
 import ColorShift
@@ -197,8 +197,8 @@ mergeEdges a b =
     }
 
 
-edges : List Line -> Edges
-edges lines =
+linesToEdges : List Line -> Edges
+linesToEdges lines =
     List.foldl
         (\line currentEdges ->
             line
@@ -209,11 +209,11 @@ edges lines =
         lines
 
 
-centered : List Line -> List Line
-centered lines =
+adjustLinesToEdges : Edges -> List Line -> List Line
+adjustLinesToEdges edges lines =
     let
         { minX, minY } =
-            edges lines
+            edges
     in
     List.map
         (\({ start, end } as line) ->

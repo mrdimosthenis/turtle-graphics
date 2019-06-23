@@ -1,4 +1,4 @@
-module TurtleTests exposing (centeredTests, edgesTests, toLinesTests)
+module TurtleTests exposing (..)
 
 import Color
 import Expect exposing (..)
@@ -251,8 +251,8 @@ toLinesTests =
         ]
 
 
-edgesTests : Test
-edgesTests =
+linesToEdgesTests : Test
+linesToEdgesTests =
     describe "lines to edges"
         [ test "single test" <|
             \_ ->
@@ -277,13 +277,13 @@ edgesTests =
                   , start = ( -20, 30 )
                   }
                 ]
-                    |> edges
+                    |> linesToEdges
                     |> equal (Edges -20 10 -25 30 30 55)
         ]
 
 
-centeredTests : Test
-centeredTests =
+adjustLinesToEdgesTests : Test
+adjustLinesToEdgesTests =
     describe "change the coordinates in order to be centered"
         [ test "single test" <|
             \_ ->
@@ -308,7 +308,7 @@ centeredTests =
                   , start = ( -20, 30 )
                   }
                 ]
-                    |> centered
+                    |> adjustLinesToEdges (Edges -20 10 -25 30 30 55)
                     |> equal
                         [ { end = ( 30, 25 ), lineColor = Color.gray, lineWidth = 1, start = ( 20, 25 ) }
                         , { end = ( 0, 25 ), lineColor = Color.gray, lineWidth = 1, start = ( 30, 25 ) }
