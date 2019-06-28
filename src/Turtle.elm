@@ -44,8 +44,6 @@ type alias Edges =
     , maxX : Float
     , minY : Float
     , maxY : Float
-    , width : Float
-    , height : Float
     }
 
 
@@ -176,14 +174,8 @@ lineEdges { start, end } =
 
         maxY =
             max startY endY
-
-        width =
-            maxX - minX
-
-        height =
-            maxY - minY
     in
-    Edges minX maxX minY maxY width height
+    Edges minX maxX minY maxY
 
 
 mergeEdges : Edges -> Edges -> Edges
@@ -192,8 +184,6 @@ mergeEdges a b =
     , maxX = max a.maxX b.maxX
     , minY = min a.minY b.minY
     , maxY = max a.maxY b.maxY
-    , width = max a.width b.width
-    , height = max a.height b.height
     }
 
 
@@ -205,7 +195,7 @@ linesToEdges lines =
                 |> lineEdges
                 |> mergeEdges currentEdges
         )
-        (Edges 0 0 0 0 0 0)
+        (Edges 0 0 0 0)
         lines
 
 

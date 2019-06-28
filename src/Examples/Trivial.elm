@@ -1,21 +1,27 @@
-module Examples.Trivial exposing (..)
+module Examples.Trivial exposing (main)
 
 import Color
 import Html
-import Turtle exposing (..)
 import Render.Svg as Svg
+import Turtle exposing (..)
 
 
 main : Html.Html msg
 main =
     [ Move 300
     , Turn 90
-    , Move 300
+    , Move 200
     , Turn 90
     , Move 300
+    , Turn 45
+    , Move 100
+    , Turn 45
+    , Move 100
+    , Turn 45
+    , Move 100
     , Turn 45
     , Move 100
     ]
         |> Branch
         |> toLines
-        |> Svg.render Color.green
+        |> Svg.render Color.darkBlue

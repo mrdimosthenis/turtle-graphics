@@ -1,4 +1,4 @@
-module TurtleTests exposing (..)
+module TurtleTests exposing (adjustLinesToEdgesTests, linesToEdgesTests, toLinesTests)
 
 import Color
 import Expect exposing (..)
@@ -278,7 +278,7 @@ linesToEdgesTests =
                   }
                 ]
                     |> linesToEdges
-                    |> equal (Edges -20 10 -25 30 30 55)
+                    |> equal (Edges -20 10 -25 30)
         ]
 
 
@@ -308,7 +308,7 @@ adjustLinesToEdgesTests =
                   , start = ( -20, 30 )
                   }
                 ]
-                    |> adjustLinesToEdges (Edges -20 10 -25 30 30 55)
+                    |> adjustLinesToEdges (Edges -20 10 -25 30)
                     |> equal
                         [ { end = ( 30, 25 ), lineColor = Color.gray, lineWidth = 1, start = ( 20, 25 ) }
                         , { end = ( 0, 25 ), lineColor = Color.gray, lineWidth = 1, start = ( 30, 25 ) }

@@ -1,4 +1,4 @@
-module Render.Svg exposing (..)
+module Render.Svg exposing (lineToSvg, render)
 
 import Color
 import Html
@@ -13,7 +13,7 @@ import TypedSvg.Types as SvgTypes
 lineToSvg : Turtle.Line -> SvgCore.Svg msg
 lineToSvg line =
     let
-        {start, end, lineWidth, lineColor } =
+        { start, end, lineWidth, lineColor } =
             line
     in
     TypedSvg.line
@@ -28,15 +28,29 @@ lineToSvg line =
 
 
 render : Color.Color -> List Turtle.Line -> Html.Html msg
-render background lines =
-    let ({width, height } as edges) =
+render color lines =
+    let
+        ({ minX, maxX, minY, maxY } as edges) =
             Turtle.linesToEdges lines
+
+        width =
+            maxX - minX
+
+        height =
+            maxY - minY
     in
     lines
         |> Turtle.adjustLinesToEdges edges
         |> List.map lineToSvg
+        |> (::)
+            (TypedSvg.rect
+                [ Attr.fill (SvgTypes.Fill color)
+                , PxAttr.width width
+                , PxAttr.height height
+                ]
+                []
+            )
         |> TypedSvg.svg
-                   [ Attr.fill (SvgTypes.Fill background)
-                   , PxAttr.width width
-                   , PxAttr.height height
-                   ]
+            [ PxAttr.width width
+            , PxAttr.height height
+            ]
