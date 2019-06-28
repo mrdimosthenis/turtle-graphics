@@ -1,28 +1,28 @@
-module ColorShift exposing (bound, bound_0_1, bound_0_256, hueShift, increaseAlpha, increaseBlue, increaseGreen, increaseLightness, increaseRed, increaseSaturation)
+module ColorShift exposing (bound, bound_1, bound_256, hueShift, increaseAlpha, increaseBlue, increaseGreen, increaseLightness, increaseRed, increaseSaturation)
 
 import Color
 
 
-bound : Float -> Float -> Float -> Float
-bound a b x =
+bound : Float -> Float -> Float
+bound b x =
     if x > b then
         b
 
-    else if x < a then
-        a
+    else if x < 0 then
+        0
 
     else
         x
 
 
-bound_0_1 : Float -> Float
-bound_0_1 =
-    bound 0 1
+bound_1 : Float -> Float
+bound_1 =
+    bound 1
 
 
-bound_0_256 : Float -> Float
-bound_0_256 =
-    bound 0 256
+bound_256 : Float -> Float
+bound_256 =
+    bound 256
 
 
 hueShift : Float -> Color.Color -> Color.Color
@@ -41,7 +41,7 @@ increaseSaturation x color =
             Color.toHsla color
 
         newSaturation =
-            bound_0_1 (saturation + x)
+            bound_1 (saturation + x)
     in
     Color.hsla hue newSaturation lightness alpha
 
@@ -53,7 +53,7 @@ increaseLightness x color =
             Color.toHsla color
 
         newLightness =
-            bound_0_1 (lightness + x)
+            bound_1 (lightness + x)
     in
     Color.hsla hue saturation newLightness alpha
 
@@ -65,7 +65,7 @@ increaseAlpha x color =
             Color.toHsla color
 
         newAlpha =
-            bound_0_1 (alpha + x)
+            bound_1 (alpha + x)
     in
     Color.hsla hue saturation lightness newAlpha
 
@@ -77,7 +77,7 @@ increaseRed x color =
             Color.toRgba color
 
         newRed =
-            bound_0_256 (red + x)
+            bound_256 (red + x)
     in
     Color.rgba newRed green blue alpha
 
@@ -89,7 +89,7 @@ increaseGreen x color =
             Color.toRgba color
 
         newGreen =
-            bound_0_256 (green + x)
+            bound_256 (green + x)
     in
     Color.rgba red newGreen blue alpha
 
@@ -101,6 +101,6 @@ increaseBlue x color =
             Color.toRgba color
 
         newBlue =
-            bound_0_256 (blue + x)
+            bound_256 (blue + x)
     in
     Color.rgba red green newBlue alpha
