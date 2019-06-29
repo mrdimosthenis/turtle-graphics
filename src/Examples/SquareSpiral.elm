@@ -15,7 +15,7 @@ iter n dist =
             iter (n - 1) (dist + 2.5)
                 |> (::) (Turn 89.5)
                 |> (::) (Move dist)
-                |> (::) (HueShift 1.0)
+                |> (::) (RotateHue 0.002)
 
 
 main : Html.Html msg
@@ -23,8 +23,8 @@ main =
     iter 200 1.0
         |> Branch
         |> List.singleton
-        |> (::) (IncreaseRed 256.0)
-        |> (::) (IncreaseGreen -256.0)
-        |> (::) (IncreaseBlue -256.0)
+        |> (::) (IncreaseRed -1)
+        |> (::) (IncreaseGreen 1)
+        |> (::) (IncreaseBlue -1)
         |> Branch
         |> Svg.render Color.darkCharcoal

@@ -21,7 +21,7 @@ type Command
     = Move Float
     | Turn Float
     | IncreaseWidth Float
-    | HueShift Float
+    | RotateHue Float
     | IncreaseSaturation Float
     | IncreaseLightness Float
     | IncreaseAlpha Float
@@ -80,9 +80,9 @@ iterate ( state, commands ) =
                     , lines
                     )
 
-                HueShift a ->
+                RotateHue x ->
                     ( { currentState
-                        | color = ColorShift.hueShift a color
+                        | color = ColorShift.rotateHue x color
                       }
                     , lines
                     )
