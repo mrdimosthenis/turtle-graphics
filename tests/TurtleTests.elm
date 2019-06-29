@@ -129,7 +129,18 @@ toLinesTests =
                         [ IncreaseWidth 0.5
                         , Move 5
                         ]
-                    , Move 5
+                    , Branch
+                        [ HueShift 180
+                        , Move 5
+                        ]
+                    , Branch
+                        [ IncreaseSaturation -0.5
+                        , Move 5
+                        ]
+                    , Branch
+                        [ IncreaseLightness -0.5
+                        , Move 5
+                        ]
                     , Branch
                         [ IncreaseAlpha -0.5
                         , Move 5
@@ -144,7 +155,18 @@ toLinesTests =
                             [ IncreaseWidth 0.5
                             , Move 5
                             ]
-                        , Move 5
+                        , Branch
+                            [ HueShift 180
+                            , Move 5
+                            ]
+                        , Branch
+                            [ IncreaseSaturation -0.5
+                            , Move 5
+                            ]
+                        , Branch
+                            [ IncreaseLightness -0.5
+                            , Move 5
+                            ]
                         , Branch
                             [ IncreaseAlpha -0.5
                             , Move 5
@@ -155,54 +177,74 @@ toLinesTests =
                         |> toLines
                         |> equal
                             [ { end = ( 10, 0 )
-                              , lineColor = Color.rgba 0.8274509803921568 0.8431372549019608 0.8117647058823529 1
+                              , lineColor = Color.gray
                               , lineWidth = 1
                               , start = ( 0, 0 )
                               }
                             , { end = ( 10, -5 )
-                              , lineColor = Color.rgba 0.8274509803921568 0.8431372549019608 0.8117647058823529 1
+                              , lineColor = Color.gray
                               , lineWidth = 1
                               , start = ( 10, 0 )
                               }
                             , { end = ( 15, 0 )
-                              , lineColor = Color.rgba 0.8274509803921568 0.8431372549019608 0.8117647058823529 1
+                              , lineColor = Color.gray
                               , lineWidth = 1.5
                               , start = ( 10, 0 )
                               }
                             , { end = ( 15, 0 )
-                              , lineColor = Color.rgba 0.8274509803921568 0.8431372549019608 0.8117647058823529 1
+                              , lineColor = Color.rgba 0.8117647058823528 0.8117647058823528 0.8117647058823528 1
                               , lineWidth = 1
                               , start = ( 10, 0 )
                               }
-                            , { end = ( 20, 0 )
+                            , { end = ( 15, 0 )
+                              , lineColor = Color.rgba 0.8274509803921568 0.8274509803921568 0.8274509803921568 1
+                              , lineWidth = 1
+                              , start = ( 10, 0 )
+                              }
+                            , { end = ( 15, 0 )
+                              , lineColor = Color.rgba 0.3274509803921567 0.3572192513368983 0.2976827094474153 1
+                              , lineWidth = 1
+                              , start = ( 10, 0 )
+                              }
+                            , { end = ( 15, 0 )
                               , lineColor = Color.rgba 0.8274509803921568 0.8431372549019608 0.8117647058823528 0.5
                               , lineWidth = 1
-                              , start = ( 15, 0 )
+                              , start = ( 10, 0 )
+                              }
+                            , { end = ( 60, 0 )
+                              , lineColor = Color.gray
+                              , lineWidth = 1
+                              , start = ( 10, 0 )
+                              }
+                            , { end = ( 60, -5 )
+                              , lineColor = Color.gray
+                              , lineWidth = 1
+                              , start = ( 60, 0 )
                               }
                             , { end = ( 65, 0 )
-                              , lineColor = Color.rgba 0.8274509803921568 0.8431372549019608 0.8117647058823529 1
-                              , lineWidth = 1
-                              , start = ( 15, 0 )
-                              }
-                            , { end = ( 65, -5 )
-                              , lineColor = Color.rgba 0.8274509803921568 0.8431372549019608 0.8117647058823529 1
-                              , lineWidth = 1
-                              , start = ( 65, 0 )
-                              }
-                            , { end = ( 70, 0 )
-                              , lineColor = Color.rgba 0.8274509803921568 0.8431372549019608 0.8117647058823529 1
+                              , lineColor = Color.gray
                               , lineWidth = 1.5
-                              , start = ( 65, 0 )
+                              , start = ( 60, 0 )
                               }
-                            , { end = ( 70, 0 )
-                              , lineColor = Color.rgba 0.8274509803921568 0.8431372549019608 0.8117647058823529 1
+                            , { end = ( 65, 0 )
+                              , lineColor = Color.rgba 0.8117647058823528 0.8117647058823528 0.8117647058823528 1
                               , lineWidth = 1
-                              , start = ( 65, 0 )
+                              , start = ( 60, 0 )
                               }
-                            , { end = ( 75, 0 )
+                            , { end = ( 65, 0 )
+                              , lineColor = Color.rgba 0.8274509803921568 0.8274509803921568 0.8274509803921568 1
+                              , lineWidth = 1
+                              , start = ( 60, 0 )
+                              }
+                            , { end = ( 65, 0 )
+                              , lineColor = Color.rgba 0.3274509803921567 0.3572192513368983 0.2976827094474153 1
+                              , lineWidth = 1
+                              , start = ( 60, 0 )
+                              }
+                            , { end = ( 65, 0 )
                               , lineColor = Color.rgba 0.8274509803921568 0.8431372549019608 0.8117647058823528 0.5
                               , lineWidth = 1
-                              , start = ( 70, 0 )
+                              , start = ( 60, 0 )
                               }
                             ]
             ]

@@ -1,4 +1,4 @@
-module ColorShift exposing (increaseAlpha, increaseBlue, increaseGreen, increaseRed)
+module ColorShift exposing (hueShift, increaseAlpha, increaseBlue, increaseGreen, increaseLightness, increaseRed, increaseSaturation)
 
 import Color
 
@@ -23,6 +23,39 @@ bound_1 =
 bound_256 : Float -> Float
 bound_256 =
     bound 256
+
+
+hueShift : Float -> Color.Color -> Color.Color
+hueShift a color =
+    let
+        { hue, saturation, lightness, alpha } =
+            Color.toHsla color
+    in
+    Color.hsla (hue + degrees a) saturation lightness alpha
+
+
+increaseSaturation : Float -> Color.Color -> Color.Color
+increaseSaturation x color =
+    let
+        { hue, saturation, lightness, alpha } =
+            Color.toHsla color
+
+        newSaturation =
+            bound_1 (saturation + x)
+    in
+    Color.hsla hue newSaturation lightness alpha
+
+
+increaseLightness : Float -> Color.Color -> Color.Color
+increaseLightness x color =
+    let
+        { hue, saturation, lightness, alpha } =
+            Color.toHsla color
+
+        newLightness =
+            bound_1 (lightness + x)
+    in
+    Color.hsla hue saturation newLightness alpha
 
 
 increaseAlpha : Float -> Color.Color -> Color.Color

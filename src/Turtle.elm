@@ -21,6 +21,9 @@ type Command
     = Move Float
     | Turn Float
     | IncreaseWidth Float
+    | HueShift Float
+    | IncreaseSaturation Float
+    | IncreaseLightness Float
     | IncreaseAlpha Float
     | IncreaseRed Float
     | IncreaseGreen Float
@@ -73,6 +76,27 @@ iterate ( state, commands ) =
                 IncreaseWidth x ->
                     ( { currentState
                         | width = max 0 (width + x)
+                      }
+                    , lines
+                    )
+
+                HueShift a ->
+                    ( { currentState
+                        | color = ColorShift.hueShift a color
+                      }
+                    , lines
+                    )
+
+                IncreaseSaturation x ->
+                    ( { currentState
+                        | color = ColorShift.increaseSaturation x color
+                      }
+                    , lines
+                    )
+
+                IncreaseLightness x ->
+                    ( { currentState
+                        | color = ColorShift.increaseLightness x color
                       }
                     , lines
                     )
