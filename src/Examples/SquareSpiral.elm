@@ -2,8 +2,7 @@ module Examples.SquareSpiral exposing (main)
 
 import Color
 import Html
-import TurtleGraphics.Core exposing (Command(..))
-import TurtleGraphics.Render exposing (render)
+import TurtleGraphics exposing (..)
 
 
 iter : Int -> Float -> List Command
@@ -15,23 +14,23 @@ iter n dist =
         _ ->
             iter (n - 1) (dist + 2.5)
                 |> List.append
-                    [ Turn 89.5
-                    , Move dist
-                    , RotateHue 0.002
-                    , IncreaseAlpha -0.005
-                    , IncreaseWidth 0.02
+                    [ turn 89.5
+                    , move dist
+                    , rotateHue 0.002
+                    , increaseAlpha -0.005
+                    , increaseWidth 0.02
                     ]
 
 
 main : Html.Html msg
 main =
     iter 200 1.0
-        |> Branch
+        |> branch
         |> List.singleton
         |> List.append
-            [ IncreaseRed -1
-            , IncreaseGreen 1
-            , IncreaseBlue -1
+            [ increaseRed -1
+            , increaseGreen 1
+            , increaseBlue -1
             ]
-        |> Branch
+        |> branch
         |> render Color.darkCharcoal
