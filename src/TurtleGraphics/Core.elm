@@ -148,7 +148,7 @@ iterate ( state, commands ) =
 
 toLines : Command -> List Line
 toLines command =
-    ( State ( 0, 0 ) 0 1 Color.gray
+    ( State ( 0, 0 ) 0 1 Color.black
     , [ command ]
     )
         |> iterate
