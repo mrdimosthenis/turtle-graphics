@@ -1,7 +1,6 @@
-module ColorShift exposing (rotateHue, increaseAlpha, increaseBlue, increaseGreen, increaseLightness, increaseRed, increaseSaturation)
+module TurtleGraphics.ColorShift exposing (..)
 
 import Color
-
 
 bound : Float -> Float
 bound x =

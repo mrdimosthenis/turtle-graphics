@@ -2,8 +2,8 @@ module Examples.SquareSpiral exposing (main)
 
 import Color
 import Html
-import Render.Svg as Svg
-import Turtle exposing (..)
+import TurtleGraphics.Core exposing (Command(..))
+import TurtleGraphics.Render exposing (render)
 
 
 iter : Int -> Float -> List Command
@@ -29,4 +29,4 @@ main =
         |> (::) (IncreaseGreen 1)
         |> (::) (IncreaseBlue -1)
         |> Branch
-        |> Svg.render Color.darkCharcoal
+        |> render Color.darkCharcoal

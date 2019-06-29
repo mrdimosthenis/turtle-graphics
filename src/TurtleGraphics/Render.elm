@@ -1,8 +1,8 @@
-module Render.Svg exposing (render)
+module TurtleGraphics.Render exposing (..)
 
 import Color
 import Html
-import Turtle
+import TurtleGraphics.Core as Turtle
 import TypedSvg
 import TypedSvg.Attributes as Attr
 import TypedSvg.Attributes.InPx as PxAttr

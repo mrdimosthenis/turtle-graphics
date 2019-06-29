@@ -12,8 +12,7 @@
             "elm/html": "1.0.0",
             "elm-community/typed-svg": "5.0.1",
             "elm-explorations/test": "1.2.1",
-            "ianmackenzie/elm-geometry": "1.2.1",
-            "joakin/elm-canvas": "3.0.5"
+            "ianmackenzie/elm-geometry": "1.2.1"
         },
         "indirect": {
             "elm/json": "1.1.2",

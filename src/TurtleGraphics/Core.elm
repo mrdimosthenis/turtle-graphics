@@ -1,7 +1,9 @@
-module Turtle exposing (Command(..), Edges, Line, adjustLinesToEdges, linesToEdges, toLines)
+module TurtleGraphics.Core exposing (..)
+
+
 
 import Color
-import ColorShift
+import TurtleGraphics.ColorShift as ColorShift
 import Vector2d
 
 
@@ -220,3 +222,4 @@ adjustLinesToEdges edges lines =
             }
         )
         lines
+
