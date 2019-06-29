@@ -16,6 +16,8 @@ iter n dist =
                 |> (::) (Turn 89.5)
                 |> (::) (Move dist)
                 |> (::) (RotateHue 0.002)
+                |> (::) (IncreaseAlpha -0.005)
+                |> (::) (IncreaseWidth 0.02)
 
 
 main : Html.Html msg
