@@ -1,4 +1,4 @@
-module TurtleGraphics.Render exposing (..)
+module TurtleGraphics.Render exposing (lineToSvg, render)
 
 import Color
 import Html
@@ -32,6 +32,7 @@ render color command =
     let
         lines =
             Turtle.toLines command
+
         ({ minX, maxX, minY, maxY } as edges) =
             Turtle.linesToEdges lines
 

@@ -1,6 +1,4 @@
-module TurtleGraphics.Core exposing (..)
-
-
+module TurtleGraphics.Core exposing (Command(..), Edges, Line, Point, State, adjustLinesToEdges, iterate, lineEdges, linesToEdges, mergeEdges, toLines)
 
 import Color
 import TurtleGraphics.ColorShift as ColorShift
@@ -222,4 +220,3 @@ adjustLinesToEdges edges lines =
             }
         )
         lines
-

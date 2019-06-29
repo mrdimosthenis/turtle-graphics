@@ -1,4 +1,4 @@
-module Examples.Tree exposing (..)
+module Examples.Tree exposing (main, tree)
 
 import Color
 import Html
@@ -24,8 +24,10 @@ tree distance =
             , Turn (-2 * angle)
             , tree (distance - 1)
             ]
+
     else
         Branch []
+
 
 main : Html.Html msg
 main =

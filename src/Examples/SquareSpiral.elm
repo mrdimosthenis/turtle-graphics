@@ -11,6 +11,7 @@ iter n dist =
     case n of
         0 ->
             []
+
         _ ->
             iter (n - 1) (dist + 2.5)
                 |> List.append
