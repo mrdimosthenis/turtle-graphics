@@ -1,4 +1,4 @@
-module Render.Svg exposing (lineToSvg, render)
+module Render.Svg exposing (render)
 
 import Color
 import Html
@@ -27,9 +27,11 @@ lineToSvg line =
         []
 
 
-render : Color.Color -> List Turtle.Line -> Html.Html msg
-render color lines =
+render : Color.Color -> Turtle.Command -> Html.Html msg
+render color command =
     let
+        lines =
+            Turtle.toLines command
         ({ minX, maxX, minY, maxY } as edges) =
             Turtle.linesToEdges lines
 

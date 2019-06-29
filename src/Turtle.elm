@@ -1,4 +1,4 @@
-module Turtle exposing (Command(..), Edges, Line, Point, State, adjustLinesToEdges, iterate, lineEdges, linesToEdges, mergeEdges, toLines)
+module Turtle exposing (Command(..), Edges, Line, adjustLinesToEdges, linesToEdges, toLines)
 
 import Color
 import ColorShift

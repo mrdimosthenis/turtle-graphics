@@ -1,4 +1,4 @@
-module ColorShift exposing (bound, bound_1, bound_256, hueShift, increaseAlpha, increaseBlue, increaseGreen, increaseLightness, increaseRed, increaseSaturation)
+module ColorShift exposing (hueShift, increaseAlpha, increaseBlue, increaseGreen, increaseLightness, increaseRed, increaseSaturation)
 
 import Color
 

@@ -21,5 +21,4 @@ main : Html.Html msg
 main =
     iter 300 1.0
         |> Branch
-        |> toLines
         |> Svg.render Color.darkCharcoal
