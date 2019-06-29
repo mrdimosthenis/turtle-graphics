@@ -13,11 +13,13 @@ iter n dist =
             []
         _ ->
             iter (n - 1) (dist + 2.5)
-                |> (::) (Turn 89.5)
-                |> (::) (Move dist)
-                |> (::) (RotateHue 0.002)
-                |> (::) (IncreaseAlpha -0.005)
-                |> (::) (IncreaseWidth 0.02)
+                |> List.append
+                    [ Turn 89.5
+                    , Move dist
+                    , RotateHue 0.002
+                    , IncreaseAlpha -0.005
+                    , IncreaseWidth 0.02
+                    ]
 
 
 main : Html.Html msg
@@ -25,8 +27,10 @@ main =
     iter 200 1.0
         |> Branch
         |> List.singleton
-        |> (::) (IncreaseRed -1)
-        |> (::) (IncreaseGreen 1)
-        |> (::) (IncreaseBlue -1)
+        |> List.append
+            [ IncreaseRed -1
+            , IncreaseGreen 1
+            , IncreaseBlue -1
+            ]
         |> Branch
         |> render Color.darkCharcoal
