@@ -12,13 +12,19 @@ iter n dist =
         0 ->
             []
         _ ->
-            iter (n - 1) (dist + 1.5)
+            iter (n - 1) (dist + 2.5)
                 |> (::) (Turn 89.5)
                 |> (::) (Move dist)
+                |> (::) (HueShift 1.0)
 
 
 main : Html.Html msg
 main =
-    iter 300 1.0
+    iter 200 1.0
+        |> Branch
+        |> List.singleton
+        |> (::) (IncreaseRed 256.0)
+        |> (::) (IncreaseGreen -256.0)
+        |> (::) (IncreaseBlue -256.0)
         |> Branch
         |> Svg.render Color.darkCharcoal
