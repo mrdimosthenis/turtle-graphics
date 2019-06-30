@@ -4,7 +4,7 @@
         "src"
     ],
     "name": "mrdimosthenis/turtle-graphics",
-    "summary": "A library which lets us command a relative cursor (\"turtle\") to draw vector graphics",
+    "summary": "A library which lets us command a relative cursor (turtle) to draw vector graphics",
     "license": "MIT",
     "version": "1.0.0",
     "exposed-modules": [
