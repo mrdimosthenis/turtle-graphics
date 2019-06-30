@@ -1,5 +1,18 @@
 module TurtleGraphics exposing (Command, branch, increaseAlpha, increaseBlue, increaseGreen, increaseLightness, increaseRed, increaseSaturation, increaseWidth, move, render, rotateHue, turn)
 
+{-| This is an Elm library which lets us command a relative cursor ("turtle") to draw vector graphics!
+
+# Definition
+@docs Command
+
+# Commands
+@docs move, turn, increaseWidth, rotateHue, increaseSaturation, increaseLightness, increaseAlpha, increaseRed, increaseGreen, increaseBlue, branch
+
+# Render
+@docs render
+
+-}
+
 import Color exposing (Color)
 import Html exposing (Html)
 import TurtleGraphics.Core as Core
