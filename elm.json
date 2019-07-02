@@ -6,7 +6,7 @@
     "name": "mrdimosthenis/turtle-graphics",
     "summary": "This package lets us command a relative cursor (turtle) to draw vector graphics",
     "license": "MIT",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "exposed-modules": [
         "TurtleGraphics"
     ],
