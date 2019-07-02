@@ -1,4 +1,4 @@
-module Examples.SquareSpiral exposing (main)
+module SquareSpiral exposing (main)
 
 import Color
 import Html
